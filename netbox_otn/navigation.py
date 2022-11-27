@@ -20,5 +20,4 @@ menu_items = (
         link="plugins:netbox_otn:channelgroup_list",
         link_text="WDM Channel Groups",
     ),
-
 )

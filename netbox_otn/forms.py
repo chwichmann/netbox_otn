@@ -12,7 +12,7 @@ class OMSForm(NetBoxModelForm):
 class OCHForm(NetBoxModelForm):
     channel = DynamicModelChoiceField(
             queryset=Channel.objects.all()
-
+    )
     class Meta:
         model = OCH
         fields = ('name', 'payload', 'channel')
@@ -21,13 +21,13 @@ class ChannelGroupForm(NetBoxModelForm):
     comments = CommentField()
     channels = DynamicModelChoiceField(
             queryset=Channel.objects.all()
-
+    )
     class Meta:
         model = ChannelGroup
-        field = ('name', 'channels', 'comments')
+        fields = ('name', 'channels', 'comments')
 
 class ChannelForm(NetBoxModelForm):
 
     class Meta:
         model = Channel
-        field = ('name', 'frequency', 'wavelength')
+        fields = ('name', 'frequency', 'wavelength')

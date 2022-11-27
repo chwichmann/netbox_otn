@@ -35,12 +35,11 @@ urlpatterns = (
 
         # Channel
         path('channel/', views.ChannelListView.as_view(), name='channel_list'),
-        path('channel/add/', views.ChannelditView.as_view(), name='channel_add'),
+        path('channel/add/', views.ChannelEditView.as_view(), name='channel_add'),
         path('channel/<int:pk>/', views.ChannelView.as_view(), name='channel'),
         path('channel/<int:pk>/edit/', views.ChannelEditView.as_view(), name='channel_edit'),
         path('channel/<int:pk>/delete/', views.ChannelDeleteView.as_view(), name='channel_delete'),
         path('channel/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='channel_changelog', kwargs={
             'model': models.Channel
             }),
-
         )

@@ -47,7 +47,7 @@ class ChannelGroupEditView(generic.ObjectEditView):
     queryset = models.ChannelGroup.objects.all()
     form = forms.ChannelGroupForm
 
-class ChanelGroupDeleteView(generic.ObjectDeleteView):
+class ChannelGroupDeleteView(generic.ObjectDeleteView):
     queryset = models.ChannelGroup.objects.all()
 
 
@@ -63,5 +63,5 @@ class ChannelEditView(generic.ObjectEditView):
     queryset = models.Channel.objects.all()
     form = forms.ChannelForm
 
-class ChennelDeleteView(generic.ObjectDeleteView):
+class ChannelDeleteView(generic.ObjectDeleteView):
     queryset = models.Channel.objects.all()

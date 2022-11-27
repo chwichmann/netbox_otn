@@ -39,7 +39,7 @@ class ChannelGroupTable(NetBoxTable):
         fields = ('pk', 'id', 'name', 'channels', 'channel_count',  'comments')
         default_columns = ('name', 'channel_count')
 
-class Channel(NetBoxTable):
+class ChannelTable(NetBoxTable):
     name = tables.Column(
             linkify=True
             )

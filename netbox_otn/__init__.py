@@ -1,4 +1,4 @@
-"""Plugin declaration for netbox_onboarding.
+"""Plugin declaration for netbox_otn.
 
 (c) 2022 Christian Wichmann
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ class OtnConfig(PluginConfig):
     """Plugin configuration for the netbox_otn plugin."""
 
     name = "netbox_otn"
-    verbose_name = "OTN Netbox Plugin"
+    verbose_name = "OTN"
     author = "Christian Wichmann"
     author_email = "christian.wichmann@outlook.com"
     description = "A plugin for NetBox to add the OTN Layer"

@@ -1,8 +1,10 @@
+LICENCE
 README.md
 setup.py
 netbox_otn/__init__.py
 netbox_otn/forms.py
 netbox_otn/models.py
+netbox_otn/navigation.py
 netbox_otn/tables.py
 netbox_otn/urls.py
 netbox_otn/views.py
