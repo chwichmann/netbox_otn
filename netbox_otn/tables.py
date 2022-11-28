@@ -17,7 +17,7 @@ class OMSTable(NetBoxTable):
     class Meta(NetBoxTable.Meta):
         model = OMS
         fields = ('pk', 'id', 'name', 'channelgroup', 'comments')
-        default_columns = ('name')
+        default_columns = ('name', 'channelgroup')
 
 class OCHTable(NetBoxTable):
     name = tables.Column(
@@ -31,7 +31,7 @@ class OCHTable(NetBoxTable):
     class Meta(NetBoxTable.Meta):
         model = OCH
         fields = ('pk', 'id', 'name', 'payload', 'channel')
-        default_columuns = ('name', 'payload', 'channel')
+        default_columns = ('name', 'payload', 'channel')
 
 class ChannelGroupTable(NetBoxTable):
     name = tables.Column(

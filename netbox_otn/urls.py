@@ -6,6 +6,8 @@ urlpatterns = (
         # OMS
         path('oms/', views.OMSListView.as_view(), name='oms_list'),
         path('oms/add/', views.OMSEditView.as_view(), name='oms_add'),
+        path('oms/delete/', views.OMSBulkDeleteView.as_view(), name='oms_bulk_delete'),
+        path('oms/edit/', views.OMSBulkEditView.as_view(), name='oms_bulk_edit'),
         path('oms/<int:pk>/', views.OMSView.as_view(), name='oms'),
         path('oms/<int:pk>/edit/', views.OMSEditView.as_view(), name='oms_edit'),
         path('oms/<int:pk>/delete/', views.OMSDeleteView.as_view(), name='oms_delete'),

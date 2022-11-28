@@ -1,5 +1,5 @@
 from netbox.views import generic
-from . import forms, models, tables
+from . import forms, models, tables, filtersets
 from django.db.models import Count
 
 # OMS
@@ -13,6 +13,16 @@ class OMSListView(generic.ObjectListView):
 class OMSEditView(generic.ObjectEditView):
     queryset = models.OMS.objects.all()
     form = forms.OMSForm
+
+class OMSBulkDeleteView(generic.BulkDeleteView):
+    queryset = models.OMS.objects.all()
+    table = tables.OMSTable
+
+class OMSBulkEditView(generic.BulkEditView):
+    queryset = models.OMS.objects.all()
+    #filterset = filters.CommunityFilterSet
+    table = tables.OMSTable
+    form = forms.OMSBulkEditForm
 
 class OMSDeleteView(generic.ObjectDeleteView):
     queryset = models.OMS.objects.all()
@@ -36,11 +46,21 @@ class OCHDeleteView(generic.ObjectDeleteView):
 class ChannelGroupView(generic.ObjectView):
     queryset = models.ChannelGroup.objects.all()
 
+    def get_extra_context(self, request, instance):
+        table = tables.ChannelTable(instance.channels.all())
+        table.configure(request)
+
+        return {
+            'channel_table': table,
+        }
+
 class ChannelGroupListView(generic.ObjectListView):
     queryset = models.ChannelGroup.objects.annotate(
         channel_count=Count('channels')
             )
     table = tables.ChannelGroupTable
+    filterset = filtersets.ChannelFilterSet
+    filterset_form =forms.ChannelFilterForm
 
 class ChannelGroupEditView(generic.ObjectEditView):
     queryset = models.ChannelGroup.objects.all()
@@ -52,6 +72,14 @@ class ChannelGroupDeleteView(generic.ObjectDeleteView):
 # Channel
 class ChannelView(generic.ObjectView):
     queryset = models.Channel.objects.all()
+
+    def get_extra_context(self, request, instance):
+        table = tables.OCHTable(instance.och_channel.all())
+        table.configure(request)
+
+        return {
+            'och_table': table,
+        }
 
 class ChannelListView(generic.ObjectListView):
     queryset = models.Channel.objects.all()
