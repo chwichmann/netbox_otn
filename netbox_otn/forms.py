@@ -7,7 +7,7 @@ class OMSForm(NetBoxModelForm):
 
     class Meta:
         model = OMS
-        fields = ('name', 'comments')
+        fields = ('name', 'channelgroup', 'comments')
 
 class OCHForm(NetBoxModelForm):
     channel = DynamicModelChoiceField(
@@ -25,7 +25,7 @@ class ChannelGroupForm(NetBoxModelForm):
     class Meta:
         model = ChannelGroup
         fields = ('name', 'channels', 'comments')
-
+  
 class ChannelForm(NetBoxModelForm):
 
     class Meta:

@@ -2,6 +2,7 @@ from netbox.views import generic
 from . import forms, models, tables
 from django.db.models import Count
 
+# OMS
 class OMSView(generic.ObjectView):
     queryset = models.OMS.objects.all()
 
@@ -16,8 +17,7 @@ class OMSEditView(generic.ObjectEditView):
 class OMSDeleteView(generic.ObjectDeleteView):
     queryset = models.OMS.objects.all()
 
-
-
+# OCH
 class OCHView(generic.ObjectView):
     queryset = models.OCH.objects.all()
 
@@ -32,8 +32,7 @@ class OCHEditView(generic.ObjectEditView):
 class OCHDeleteView(generic.ObjectDeleteView):
     queryset = models.OCH.objects.all()
 
-
-
+# Channel Group
 class ChannelGroupView(generic.ObjectView):
     queryset = models.ChannelGroup.objects.all()
 
@@ -50,8 +49,7 @@ class ChannelGroupEditView(generic.ObjectEditView):
 class ChannelGroupDeleteView(generic.ObjectDeleteView):
     queryset = models.ChannelGroup.objects.all()
 
-
-
+# Channel
 class ChannelView(generic.ObjectView):
     queryset = models.Channel.objects.all()
 

@@ -1,3 +1,5 @@
+from operator import truediv
+from pickle import TRUE
 import django_tables2 as tables
 
 from netbox.tables import NetBoxTable, ChoiceFieldColumn
@@ -8,9 +10,13 @@ class OMSTable(NetBoxTable):
             linkify=True
             )
 
+    channelgroup = tables.Column(
+            linkify=True
+            )
+
     class Meta(NetBoxTable.Meta):
         model = OMS
-        fields = ('pk', 'id', 'name', 'comments')
+        fields = ('pk', 'id', 'name', 'channelgroup', 'comments')
         default_columns = ('name')
 
 class OCHTable(NetBoxTable):
