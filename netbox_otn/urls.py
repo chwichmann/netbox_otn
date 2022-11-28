@@ -18,6 +18,8 @@ urlpatterns = (
         # OCH
         path('och/', views.OCHListView.as_view(), name='och_list'),
         path('och/add/', views.OCHEditView.as_view(), name='och_add'),
+        path('och/delete/', views.OCHBulkDeleteView.as_view(), name='och_bulk_delete'),
+        path('och/edit/', views.OCHBulkEditView.as_view(), name='och_bulk_edit'),
         path('och/<int:pk>/', views.OCHView.as_view(), name='och'),
         path('och/<int:pk>/edit/', views.OCHEditView.as_view(), name='och_edit'),
         path('och/<int:pk>/delete/', views.OCHDeleteView.as_view(), name='och_delete'),

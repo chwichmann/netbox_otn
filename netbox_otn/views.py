@@ -39,6 +39,16 @@ class OCHEditView(generic.ObjectEditView):
     queryset = models.OCH.objects.all()
     form = forms.OCHForm
 
+class OCHBulkDeleteView(generic.BulkDeleteView):
+    queryset = models.OCH.objects.all()
+    table = tables.OCHTable
+
+class OCHBulkEditView(generic.BulkEditView):
+    queryset = models.OCH.objects.all()
+    #filterset = filters.CommunityFilterSet
+    table = tables.OCHTable
+    form = forms.OCHBulkEditForm
+
 class OCHDeleteView(generic.ObjectDeleteView):
     queryset = models.OCH.objects.all()
 
