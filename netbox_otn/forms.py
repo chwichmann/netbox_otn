@@ -1,6 +1,6 @@
 from pickle import FALSE
 from django import forms
-from netbox.forms import NetBoxModelForm, NetBoxModelFilterSetForm, NetBoxModelBulkEditForm
+from netbox.forms import NetBoxModelForm, NetBoxModelFilterSetForm, NetBoxModelBulkEditForm, NetBoxModelCSVForm
 from .models import OMS, OCH, Channel, ChannelGroup, OCHPayloadChoices
 from utilities.forms.fields import CommentField, DynamicModelChoiceField, DynamicModelMultipleChoiceField
 
@@ -55,6 +55,12 @@ class ChannelGroupForm(NetBoxModelForm):
         fields = ('name', 'channels', 'comments')
   
 class ChannelForm(NetBoxModelForm):
+
+    class Meta:
+        model = Channel
+        fields = ('name', 'frequency', 'wavelength')
+
+class ChannelCSVForm(NetBoxModelCSVForm):
 
     class Meta:
         model = Channel

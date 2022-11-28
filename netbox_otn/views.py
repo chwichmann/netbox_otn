@@ -101,3 +101,8 @@ class ChannelEditView(generic.ObjectEditView):
 
 class ChannelDeleteView(generic.ObjectDeleteView):
     queryset = models.Channel.objects.all()
+
+class ChannelBulkImportView(generic.BulkImportView):
+    queryset = models.Channel.objects.all()
+    model_form = forms.ChannelCSVForm
+    table = tables.ChannelTable
