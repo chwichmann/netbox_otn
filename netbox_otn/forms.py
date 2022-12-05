@@ -28,7 +28,7 @@ class OCHForm(NetBoxModelForm):
     )
     class Meta:
         model = OCH
-        fields = ('name', 'payload', 'channel')
+        fields = ('name', 'oms', 'payload', 'channel')
 
 class OCHBulkEditForm(NetBoxModelBulkEditForm):
     name = forms.CharField(
