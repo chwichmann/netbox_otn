@@ -11,3 +11,17 @@
 /.vs/netbox_otn/FileContentIndex/2c93276e-7a10-4cba-95ba-90e63e2425c3.vsidx
 /.vs/netbox_otn/FileContentIndex/05235bf1-2d20-4f2d-bb27-5c13669d1164.vsidx
 /.vs/netbox_otn/FileContentIndex/30c5fe78-46cc-495b-b82c-0b1025922d05.vsidx
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.vs/netbox_otn/config/applicationhost.config
+/.vs/netbox_otn/v17/.wsuo
+*.vsidx
+/.vs/netbox_otn/FileContentIndex/4e30bfa9-e596-4648-8472-effa2ad4a114.vsidx
+/.vs/netbox_otn/FileContentIndex/9382613c-51c9-4954-aadd-04993545ebb5.vsidx
+/netbox_otn.egg-info/top_level.txt
+/netbox_otn.egg-info/SOURCES.txt
+/netbox_otn.egg-info/PKG-INFO
+/netbox_otn.egg-info/not-zip-safe
+/netbox_otn.egg-info/dependency_links.txt
+*.lock
