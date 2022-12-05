@@ -25,3 +25,5 @@
 /netbox_otn.egg-info/not-zip-safe
 /netbox_otn.egg-info/dependency_links.txt
 *.lock
+/.vs/netbox_otn/FileContentIndex/read.lock
+/.vs/netbox_otn/v17/.suo
