@@ -27,3 +27,5 @@
 *.lock
 /.vs/netbox_otn/FileContentIndex/read.lock
 /.vs/netbox_otn/v17/.suo
+/netbox_otn/api/__pycache__
+/netbox_otn/__pycache__
