@@ -19,13 +19,10 @@
 *.vsidx
 /.vs/netbox_otn/FileContentIndex/4e30bfa9-e596-4648-8472-effa2ad4a114.vsidx
 /.vs/netbox_otn/FileContentIndex/9382613c-51c9-4954-aadd-04993545ebb5.vsidx
-/netbox_otn.egg-info/top_level.txt
-/netbox_otn.egg-info/SOURCES.txt
-/netbox_otn.egg-info/PKG-INFO
-/netbox_otn.egg-info/not-zip-safe
-/netbox_otn.egg-info/dependency_links.txt
+/netbox_otn.egg-info/
 *.lock
 /.vs/netbox_otn/FileContentIndex/read.lock
 /.vs/netbox_otn/v17/.suo
 /netbox_otn/api/__pycache__
 /netbox_otn/__pycache__
+/netbox_otn/migrations/__pycache__
