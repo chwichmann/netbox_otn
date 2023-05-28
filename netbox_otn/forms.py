@@ -1,7 +1,8 @@
 from pickle import FALSE
 from django import forms
-from netbox.forms import NetBoxModelForm, NetBoxModelFilterSetForm, NetBoxModelBulkEditForm, NetBoxModelCSVForm
-from .models import OMS, OCH, Channel, ChannelGroup, OCHPayloadChoices
+from netbox.forms import NetBoxModelForm, NetBoxModelFilterSetForm, NetBoxModelBulkEditForm, NetBoxModelImportForm
+from .models import OMS, OCH, Channel, ChannelGroup
+from . import choices
 from utilities.forms.fields import CommentField, DynamicModelChoiceField, DynamicModelMultipleChoiceField
 
 class OMSForm(NetBoxModelForm):
@@ -9,7 +10,7 @@ class OMSForm(NetBoxModelForm):
 
     class Meta:
         model = OMS
-        fields = ('name', 'channelgroup', 'comments')
+        fields = ('name', 'channelgroup', 'status', 'comments')
 
 class OMSBulkEditForm(NetBoxModelBulkEditForm):
     name = forms.CharField(
@@ -28,7 +29,7 @@ class OCHForm(NetBoxModelForm):
     )
     class Meta:
         model = OCH
-        fields = ('name', 'oms', 'payload', 'channel')
+        fields = ('name', 'oms', 'payload', 'channel', 'status')
 
 class OCHBulkEditForm(NetBoxModelBulkEditForm):
     name = forms.CharField(
@@ -36,7 +37,7 @@ class OCHBulkEditForm(NetBoxModelBulkEditForm):
     )
 
     payload = forms.ChoiceField(
-        choices= OCHPayloadChoices
+        choices= choices.OCHPayloadChoices
         )
 
     channel = DynamicModelMultipleChoiceField(
@@ -60,7 +61,7 @@ class ChannelForm(NetBoxModelForm):
         model = Channel
         fields = ('name', 'frequency', 'wavelength')
 
-class ChannelCSVForm(NetBoxModelCSVForm):
+class ChannelImportForm(NetBoxModelImportForm):
 
     class Meta:
         model = Channel

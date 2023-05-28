@@ -1,8 +1,6 @@
-from tabnanny import verbose
-from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from netbox.models import NetBoxModel
-from utilities.choices import ChoiceSet
+from . import choices
 from django.urls import reverse
 
 class Channel(NetBoxModel):
@@ -34,7 +32,8 @@ class Channel(NetBoxModel):
 
 class ChannelGroup(NetBoxModel):
     name = models.CharField(
-            max_length=50
+            max_length=50,
+            unique=True,
             )
 
     channels = models.ManyToManyField(
@@ -58,18 +57,21 @@ class ChannelGroup(NetBoxModel):
 class OMS(NetBoxModel):
     name = models.CharField(
         max_length=50
-        )
-
+    )
     channelgroup = models.ForeignKey(
             to=ChannelGroup,
             on_delete=models.PROTECT,
             related_name='oms_channelgroup',
             verbose_name = "Channel Group"
-            )
-
+    )
+    status = models.CharField(
+        max_length=50,
+        choices=choices.OMSStatusChoices,
+        default=choices.OMSStatusChoices.STATUS_PLANNED,
+    )
     comments = models.TextField(
         blank=True
-        )
+    )
     class Meta:
         ordering = ('name',)
         verbose_name = 'Optical Multiplexer Section'
@@ -81,23 +83,15 @@ class OMS(NetBoxModel):
     def get_absolute_url(self):
         return reverse('plugins:netbox_otn:oms', args=[self.pk])
 
+    def get_status_color(self):
+        return choices.OMSStatusChoices.colors.get(self.status)
 
-class OCHPayloadChoices(ChoiceSet):
-    key = 'OCH.payload'
-
-    CHOICES = [
-            ('oduc2', 'ODUC2', 'orange'),
-            ('odu4', 'ODU4', 'yellow'),
-            ('odu2e', 'ODU2e','blue'),
-            ('odu2', 'ODU2', 'lightblue'),
-    ]
 
 class OCH(NetBoxModel):
     oms = models.ManyToManyField(
             OMS,
             related_name='och_oms',
             blank=True,
-            null=True
             )
 
     name = models.CharField(
@@ -106,7 +100,7 @@ class OCH(NetBoxModel):
     
     payload = models.CharField(
             max_length=50,
-            choices=OCHPayloadChoices
+            choices=choices.OCHPayloadChoices
             )
 
     channel = models.ForeignKey(
@@ -116,6 +110,14 @@ class OCH(NetBoxModel):
             blank=True,
             null=True
             )
+    status = models.CharField(
+        max_length=50,
+        choices=choices.OCHStatusChoices,
+        default=choices.OCHStatusChoices.STATUS_PLANNED,
+    )
+    comments = models.TextField(
+        blank=True
+    )
 
     class Meta:
         ordering = ('name',)
@@ -128,5 +130,5 @@ class OCH(NetBoxModel):
     def get_absolute_url(self):
         return reverse('plugins:netbox_otn:och', args=[self.pk])
 
-    def get_payload_color(self):
-        return OCHPayloadChoices.colors.get(self.payload)
+    def get_status_color(self):
+        return choices.OCHStatusChoices.colors.get(self.status)

@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='netbox_otn',
-    version='0.1',
+    version='0.0.1',
     description='Manage the OTN Layer in your network',
     install_requires=[],
     packages=find_packages(),
