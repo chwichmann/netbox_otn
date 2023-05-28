@@ -7,19 +7,17 @@ class Channel(NetBoxModel):
     name = models.CharField(
             verbose_name = "Channel Name",
             max_length=50
-            )
-
+    )
     frequency = models.DecimalField(
             verbose_name = "Frequency (THz)",
             max_digits=5,
             decimal_places=2
-            )
-
+    )
     wavelength = models.DecimalField(
             verbose_name = "Wavelength (nm)",
             max_digits=6,
             decimal_places=2
-            )
+    )
 
     class Meta:
         ordering = ('name',)
@@ -34,16 +32,14 @@ class ChannelGroup(NetBoxModel):
     name = models.CharField(
             max_length=50,
             unique=True,
-            )
-
+    )
     channels = models.ManyToManyField(
             Channel,
             related_name='channelgroup_channel'
-            )
-
+    )
     comments = models.TextField(
             blank=True
-            )
+    )
 
     class Meta:
         ordering = ('name',)
@@ -92,24 +88,21 @@ class OCH(NetBoxModel):
             OMS,
             related_name='och_oms',
             blank=True,
-            )
-
+    )
     name = models.CharField(
             max_length=50
-            )
-    
+    )
     payload = models.CharField(
             max_length=50,
             choices=choices.OCHPayloadChoices
-            )
-
+    )
     channel = models.ForeignKey(
             to=Channel,
             on_delete=models.PROTECT,
             related_name='och_channel',
             blank=True,
             null=True
-            )
+    )
     status = models.CharField(
         max_length=50,
         choices=choices.OCHStatusChoices,
