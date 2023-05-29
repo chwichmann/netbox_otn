@@ -39,3 +39,18 @@ class OCHStatusChoices(ChoiceSet):
         (STATUS_PLANNED, 'Planned', 'cyan'),
         (STATUS_DECOMMISSIONING, 'Decommissioning', 'yellow'),
     ]
+
+class ServiceStatusChoices(ChoiceSet):
+    key = 'Service.status'
+
+    STATUS_OFFLINE = 'offline'
+    STATUS_ACTIVE = 'active'
+    STATUS_PLANNED = 'planned'
+    STATUS_DECOMMISSIONING = 'decommissioning'
+
+    CHOICES = [
+        (STATUS_OFFLINE, 'Offline', 'gray'),
+        (STATUS_ACTIVE, 'Active', 'green'),
+        (STATUS_PLANNED, 'Planned', 'cyan'),
+        (STATUS_DECOMMISSIONING, 'Decommissioning', 'yellow'),
+    ]

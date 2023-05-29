@@ -18,6 +18,22 @@
                             <a href="{{ object.channelgroup.get_absolute_url }}">{{ object.channelgroup }}</a>
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="row">A End</th>
+                        <td>
+                            <a href="{{ object.device_a.get_absolute_url }}">{{ object.a_end }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Z End</th>
+                        <td>
+                            <a href="{{ object.device_z.get_absolute_url }}">{{ object.z_end }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status</th>
+                        <td>{% badge object.get_status_display bg_color=object.get_status_color %}</td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -26,6 +42,12 @@
     <div class="col col-md-6">
         {% include 'inc/panels/tags.html' %}
         {% include 'inc/panels/comments.html' %}
+    </div>
+</div>
+<div class="card">
+    <h5 class="card-header">Optical Channels</h5>
+    <div class="card-body table-responsive">
+        {% render_table och_table %}
     </div>
 </div>
 {% endblock content %}

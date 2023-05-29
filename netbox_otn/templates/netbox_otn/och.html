@@ -20,21 +20,55 @@
                         <th scope="row">Channel</th>
                         <td>
                             {% if object.channel %}
-                                <a href="{{ object.channel.get_absolute_url }}">{{ object.channel }}</a>
+                            <a href="{{ object.channel.get_absolute_url }}">{{ object.channel }}</a>
                             {% else %}
-                                <span class="text-muted">None</span>
+                            <span class="text-muted">None</span>
                             {% endif %}
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">OMS</th>
+                        <th scope="row">A-End</th>
                         <td>
-                            {% if object.oms %}
-                                <a href="{{ object.oms.get_absolute_url }}">{{ object.oms }}</a>
+                            {% if object.a_end %}
+                            <a href="{{ object.interface_a.device.get_absolute_url }}">{{ object.a_end }}</a>
                             {% else %}
-                                <span class="text-muted">None</span>
+                            <span class="text-muted">None</span>
                             {% endif %}
                         </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Z-End</th>
+                        <td>
+                            {% if object.z_end %}
+                            <a href="{{ object.interface_z.device.get_absolute_url }}">{{ object.z_end }}</a>
+                            {% else %}
+                            <span class="text-muted">None</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mux A</th>
+                        <td>
+                            {% if object.a_end %}
+                            <a href="{{ object.muxport_a.device.get_absolute_url }}">{{ object.mux_a }}</a>
+                            {% else %}
+                            <span class="text-muted">None</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mux Z</th>
+                        <td>
+                            {% if object.a_end %}
+                            <a href="{{ object.muxport_z.device.get_absolute_url }}">{{ object.mux_z }}</a>
+                            {% else %}
+                            <span class="text-muted">None</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status</th>
+                        <td>{% badge object.get_status_display bg_color=object.get_status_color %}</td>
                     </tr>
                 </table>
             </div>
@@ -44,6 +78,12 @@
     <div class="col col-md-6">
         {% include 'inc/panels/tags.html' %}
         {% include 'inc/panels/comments.html' %}
+    </div>
+</div>
+<div class="card">
+    <h5 class="card-header">Optical Multiplexer Sections</h5>
+    <div class="card-body table-responsive">
+        {% render_table oms_table %}
     </div>
 </div>
 {% endblock content %}
