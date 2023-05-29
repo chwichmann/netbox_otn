@@ -28,6 +28,7 @@ class Channel(NetBoxModel):
     def get_absolute_url(self):
         return reverse('plugins:netbox_otn:channel', args=[self.pk])
 
+
 class ChannelGroup(NetBoxModel):
     name = models.CharField(
             max_length=50,
@@ -49,6 +50,7 @@ class ChannelGroup(NetBoxModel):
 
     def get_absolute_url(self):
         return reverse('plugins:netbox_otn:channelgroup', args=[self.pk])
+
 
 class OMS(NetBoxModel):
     name = models.CharField(
@@ -251,18 +253,33 @@ class Client(NetBoxModel):
         max_length=50
     )
     contract = models.CharField(
-        max_length=50
+        max_length=50,
+        null=True,
+        blank=True,
+    )
+    och = models.ManyToManyField(
+        to=OCH,
+        on_delete=models.PROTECT,
+        related_name='client_och',
+        verbose_name = "Optical Channel"
     )
     status = models.CharField(
         max_length=50,
-        choices=choices.ServiceStatusChoices,
-        default=choices.ServiceStatusChoices.STATUS_PLANNED,
+        choices=choices.ClientStatusChoices,
+        default=choices.ClientStatusChoices.STATUS_PLANNED,
+    )
+    profile = models.CharField(
+        max_length=50,
+        choices=choices.ClientProfileChoices,
+    )
+    comments = models.TextField(
+        blank=True
     )
 
     class Meta:
         ordering = ('name',)
-        verbose_name = "Optical Client"
-        verbose_name_plural = "Optical Clients"
+        verbose_name = "Client Signal"
+        verbose_name_plural = "Client Signals"
 
     def __str__(self):
         return self.name

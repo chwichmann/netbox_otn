@@ -45,7 +45,7 @@ class OCHView(generic.ObjectView):
 
     def get_extra_context(self, request, instance):
         table = tables.OMSTable(instance.oms.all())
-        #table.configure(request)
+        table.configure(request)
 
         return {
             'oms_table': table,

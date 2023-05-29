@@ -10,6 +10,17 @@ class OCHPayloadChoices(ChoiceSet):
             ('odu2', 'ODU2'),
     ]
 
+class ClientProfileChoices(ChoiceSet):
+    key = 'Client.profile'
+
+    CHOICES = [
+            ('oduc2', 'ODUC2'),
+            ('odu4', 'ODU4'),
+            ('odu2e', 'ODU2e'),
+            ('odu2', 'ODU2'),
+    ]
+
+
 class OMSStatusChoices(ChoiceSet):
     key = 'OMS.status'
 
@@ -40,8 +51,8 @@ class OCHStatusChoices(ChoiceSet):
         (STATUS_DECOMMISSIONING, 'Decommissioning', 'yellow'),
     ]
 
-class ServiceStatusChoices(ChoiceSet):
-    key = 'Service.status'
+class ClientStatusChoices(ChoiceSet):
+    key = 'Client.status'
 
     STATUS_OFFLINE = 'offline'
     STATUS_ACTIVE = 'active'
