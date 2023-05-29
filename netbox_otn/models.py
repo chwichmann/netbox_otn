@@ -259,7 +259,6 @@ class Client(NetBoxModel):
     )
     och = models.ManyToManyField(
         to=OCH,
-        on_delete=models.PROTECT,
         related_name='client_och',
         verbose_name = "Optical Channel"
     )
@@ -271,6 +270,18 @@ class Client(NetBoxModel):
     profile = models.CharField(
         max_length=50,
         choices=choices.ClientProfileChoices,
+    )
+    interface_a = models.OneToOneField(
+        to='dcim.Interface',
+        on_delete=models.CASCADE,
+        related_name='client_interface_a',
+        verbose_name = "Interface"
+    )
+    interface_z = models.OneToOneField(
+        to='dcim.Interface',
+        on_delete=models.CASCADE,
+        related_name='client_interface_z',
+        verbose_name = "Interface"
     )
     comments = models.TextField(
         blank=True
@@ -286,3 +297,9 @@ class Client(NetBoxModel):
 
     def get_absolute_url(self):
         return reverse('plugins:netbox_otn:client', args=[self.pk])
+
+    def a_end(self):
+        return f'{self.interface_a.device.name}: {self.interface_a}'
+
+    def z_end(self):
+        return f'{self.interface_z.device.name}: {self.interface_z}'
